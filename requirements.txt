@@ -1,0 +1,5 @@
+mypy
+snoop
+pydantic
+flask-nova
+python-dotenv

@@ -130,7 +130,7 @@ Once the server is running, try:
 
 ## 5. Capability-testing checklist
 
-``**♠** means `passed`
+**♠** means `passed`
 **♣** means `failed`
 **♦** means `not-checked`
 

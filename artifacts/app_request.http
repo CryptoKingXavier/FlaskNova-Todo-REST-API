@@ -14,7 +14,7 @@ GET {{base_url}}/api/v1/todos
 null
 
 ###
-GET {{base_url}}/api/v1/todos/todo_id
+GET {{base_url}}/api/v1/todo/get/todo_id
 null
 
 ###
@@ -22,22 +22,22 @@ POST {{base_url}}/api/v1/todos
 Content-Type: application/json
 
 {
-    "title": "value",
+    "title": "str-obj",
     "description": "string"
 }
 
 ###
-PATCH {{base_url}}/api/v1/todos/todo_id
+PATCH {{base_url}}/api/v1/todo/patch/todo_id
 Content-Type: application/json
 
 {
-    "title": "string",
-    "description": "string",
+    "title": "str-obj",
+    "description": "str-obj",
     "completed": true
 }
 
 ###
-DELETE {{base_url}}/api/v1/todos/todo_id
+DELETE {{base_url}}/api/v1/todo/delete/todo_id
 null
 
 ###

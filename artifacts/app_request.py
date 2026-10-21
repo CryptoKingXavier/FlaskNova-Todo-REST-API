@@ -22,28 +22,28 @@ def test_get_api_v1_todos() -> None:
 	request.add_header('Content-Type', '')
 	with urllib.request.urlopen(request) as response: ...
 
-def test_get_api_v1_todos_todo_id() -> None:
-	url = base_url + '/api/v1/todos/todo_id'
+def test_get_api_v1_todo_get_todo_id() -> None:
+	url = base_url + '/api/v1/todo/get/todo_id'
 	request = urllib.request.Request(url, method='GET')
 	request.add_header('Content-Type', '')
 	with urllib.request.urlopen(request) as response: ...
 
 def test_post_api_v1_todos() -> None:
 	url = base_url + '/api/v1/todos'
-	data = json.dumps({'title': 'string', 'description': 'str-obj'}).encode()
+	data = json.dumps({'title': 'string', 'description': 'value'}).encode()
 	request = urllib.request.Request(url, data=data, method='POST')
 	request.add_header('Content-Type', 'application/json')
 	with urllib.request.urlopen(request) as response: ...
 
-def test_patch_api_v1_todos_todo_id() -> None:
-	url = base_url + '/api/v1/todos/todo_id'
-	data = json.dumps({'title': 'str-obj', 'description': 'value', 'completed': True}).encode()
+def test_patch_api_v1_todo_patch_todo_id() -> None:
+	url = base_url + '/api/v1/todo/patch/todo_id'
+	data = json.dumps({'title': 'string', 'description': 'str-obj', 'completed': True}).encode()
 	request = urllib.request.Request(url, data=data, method='PATCH')
 	request.add_header('Content-Type', 'application/json')
 	with urllib.request.urlopen(request) as response: ...
 
-def test_delete_api_v1_todos_todo_id() -> None:
-	url = base_url + '/api/v1/todos/todo_id'
+def test_delete_api_v1_todo_delete_todo_id() -> None:
+	url = base_url + '/api/v1/todo/delete/todo_id'
 	request = urllib.request.Request(url, method='DELETE')
 	request.add_header('Content-Type', '')
 	with urllib.request.urlopen(request) as response: ...

@@ -29,23 +29,23 @@ Important limitations
 
 Installation
 ------------
-    python -m venv .venv
+  python -m venv .venv
 
 Activate the virtual environment, then install dependencies:
 
-    # Windows PowerShell
-    .\\.venv\\Scripts\\Activate.ps1
-    python -m pip install --upgrade pip
-    python -m pip install flask-nova pydantic
+  # Windows PowerShell
+  .\\.venv\\Scripts\\Activate.ps1
+  python -m pip install --upgrade pip
+  python -m pip install flask-nova pydantic
 
-    # Linux / macOS / Kali WSL
-    source .venv/bin/activate
-    python -m pip install --upgrade pip
-    python -m pip install flask-nova pydantic
+  # Linux / macOS / Kali WSL
+  source .venv/bin/activate
+  python -m pip install --upgrade pip
+  python -m pip install flask-nova pydantic
 
 Run
 ---
-    python app.py
+  python app.py
 
 The default development server listens at http://127.0.0.1:5000.
 Check /docs and /redoc for generated documentation, if enabled by FlaskNova.
@@ -53,23 +53,23 @@ Check /docs and /redoc for generated documentation, if enabled by FlaskNova.
 Example requests
 ----------------
 List tasks:
-    curl http://127.0.0.1:5000/api/v1/todos
+  curl http://127.0.0.1:5000/api/v1/todos
 
 Create a task:
-    curl -X POST http://127.0.0.1:5000/api/v1/todos \\
-      -H "Content-Type: application/json" \\
-      -d '{"title":"Test FlaskNova","description":"Exercise request validation"}'
+  curl -X POST http://127.0.0.1:5000/api/v1/todos \\
+    -H "Content-Type: application/json" \\
+    -d '{"title":"Test FlaskNova","description":"Exercise request validation"}'
 
 Retrieve task 1:
-    curl http://127.0.0.1:5000/api/v1/todos/1
+  curl http://127.0.0.1:5000/api/v1/todos/1
 
 Mark task 1 as completed:
-    curl -X PATCH http://127.0.0.1:5000/api/v1/todos/1 \\
-      -H "Content-Type: application/json" \\
-      -d '{"completed":true}'
+  curl -X PATCH http://127.0.0.1:5000/api/v1/todos/1 \\
+    -H "Content-Type: application/json" \\
+    -d '{"completed":true}'
 
 Delete task 1:
-    curl -X DELETE http://127.0.0.1:5000/api/v1/todos/1
+  curl -X DELETE http://127.0.0.1:5000/api/v1/todos/1
 
 Design notes
 ------------

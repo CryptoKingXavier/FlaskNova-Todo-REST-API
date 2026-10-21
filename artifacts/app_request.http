@@ -1,0 +1,43 @@
+@base_url = http://127.0.0.1:5000
+
+
+###
+GET {{base_url}}/log
+null
+
+###
+GET {{base_url}}/health
+null
+
+###
+GET {{base_url}}/api/v1/todos
+null
+
+###
+GET {{base_url}}/api/v1/todos/todo_id
+null
+
+###
+POST {{base_url}}/api/v1/todos
+Content-Type: application/json
+
+{
+    "title": "value",
+    "description": "string"
+}
+
+###
+PATCH {{base_url}}/api/v1/todos/todo_id
+Content-Type: application/json
+
+{
+    "title": "string",
+    "description": "string",
+    "completed": true
+}
+
+###
+DELETE {{base_url}}/api/v1/todos/todo_id
+null
+
+###

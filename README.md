@@ -66,12 +66,12 @@ py app.py
 
 | Method | Endpoint | Expected result |
 |---|---|---|
-| `GET` | `/api/v1/health` | `200 OK` |
+| `GET` | `/api/health` | `200 OK` |
 | `GET` | `/api/v1/todos` | `200 OK` |
 | `POST` | `/api/v1/todos` | `201 Created` |
-| `GET` | `/api/v1/todos/1` | `200 OK`, or `404` |
-| `PATCH` | `/api/v1/todos/1` | `200 OK`, or `404` |
-| `DELETE` | `/api/v1/todos/1` | `204 No Content`, or `404` |
+| `GET` | `/api/v1/todo/get/1` | `200 OK`, or `404` |
+| `PATCH` | `/api/v1/todo/patch/1` | `200 OK`, or `404` |
+| `DELETE` | `/api/v1/todo/delete/1` | `204 No Content`, or `404` |
 
 
 ```bash
@@ -79,18 +79,19 @@ flask routes
 
 # Use the command above to view this table-mapping in the terminal
 Endpoint           Methods  Rule
------------------  -------  ---------------------------
-create_todo        POST     /api/v1/todos
-delete_todo        DELETE   /api/v1/todos/<int:todo_id>
+-----------------  -------  ---------------------------------
+api.create_todo    POST     /api/v1/todos
+api.delete_todo    DELETE   /api/v1/todo/delete/<int:todo_id>
+api.get_todo       GET      /api/v1/todo/get/<int:todo_id>
+api.list_todos     GET      /api/v1/todos
+api.update_todo    PATCH    /api/v1/todo/patch/<int:todo_id>
 docs.openapi_json  GET      /openapi.json
 docs.redoc_ui      GET      /redoc
 docs.scalar_ui     GET      /scalar
 docs.swagger_ui    GET      /docs
-get_todo           GET      /api/v1/todos/<int:todo_id>
-health_check       GET      /api/v1/health
-list_todos         GET      /api/v1/todos
+health_check       GET      /health
+logger             GET      /log
 static             GET      /static/<path:filename>
-update_todo        PATCH    /api/v1/todos/<int:todo_id>
 ```
 
 ### Create your first Todo
@@ -104,7 +105,7 @@ curl -X POST http://127.0.0.1:5000/api/v1/todos \\
 ### Update its completion status
 
 ```bash
-curl -X PATCH http://127.0.0.1:5000/api/v1/todos/1 \\
+curl -X PATCH http://127.0.0.1:5000/api/v1/todo/patch/1 \\
   -H "Content-Type: application/json" \\
   -d '{"completed":true}'
 ```
@@ -126,11 +127,11 @@ Once the server is running, try:
 - Swagger UI: [http://127.0.0.1:5000/docs](http://127.0.0.1:5000/docs)
 - ReDoc: [http://127.0.0.1:5000/redoc](http://127.0.0.1:5000/redoc)
 
-> The script calls `app.setup_swagger()` as shown in the package documentation. These routes should be verified against the installed version.
+> These routes should be verified against the installed version.
 
 ## 5. Capability-testing checklist
 
-``**♠** means `passed`
+**♠** means `passed`
 **♣** means `failed`
 **♦** means `not-checked`
 
@@ -148,4 +149,4 @@ Once the server is running, try:
 
 > **Important:** This is an `initial capability-test harness`, not a claim that every behaviour has already been verified against FlaskNova. In particular, confirm the extension's actual validation-error format and response-model behaviour by running these tests.
 
-> My recommended next step is to add a `pytest` suite and compare FlaskNova's behaviour with ordinary Flask. That will give you measurable results on validation, documentation generation, HTTP semantics, and developer ergonomics before you introduce SQLAlchemy or PostgreSQL.
+> My recommended next step is to add a `pytest` suite and compare FlaskNova's behaviour with ordinary Flask. That will give measurable results on validation, documentation generation, HTTP semantics, and developer ergonomics before introducing SQLAlchemy or PostgreSQL.

@@ -1,0 +1,2 @@
+# FlaskNova Core Engine Diagnostics & Browser Summary
+flask_nova info --app core.api:app

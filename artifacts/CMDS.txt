@@ -1,0 +1,2 @@
+# FlaskNova Artifacts (HTTP & Python) Generation
+flask_nova gen --app core.api:app --format all --output artifacts/

@@ -23,5 +23,6 @@ if __name__ == "__main__":
     use_reloader=True,
     use_debugger=True,
     use_evalex=True,
-    ssl_context="adhoc",
+    # ssl_context="adhoc",   # for dummy self-signed certificate
+    ssl_context=("./openssl/cert.pem", "./openssl/key.pem"),   # for openssl self-signed certificate
   )

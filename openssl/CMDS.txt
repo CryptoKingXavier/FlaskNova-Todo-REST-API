@@ -1,0 +1,2 @@
+# OpenSSL Self-Signed Certificate Generation
+openssl req -x509 -newkey rsa:<KEY_SIZE> -nodes -out <CERTIFICATE_FILE>.pem -keyout <PRIVATE_KEY_FILE>.pem -days <VALIDITY_DAYS> -subj "/C=<COUNTRY_CODE>/ST=<STATE_OR_PROVINCE>/L=<CITY>/O=<ORGANIZATION>/OU=<DEPARTMENT>/CN=<COMMON_NAME>" -addext "subjectAltName=DNS:<DOMAIN_NAME>,IP:<IP_ADDRESS>"

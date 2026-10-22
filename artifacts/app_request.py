@@ -16,6 +16,18 @@ def test_get_health() -> None:
 	request.add_header('Content-Type', '')
 	with urllib.request.urlopen(request) as response: ...
 
+def test_get_() -> None:
+	url = base_url + '/'
+	request = urllib.request.Request(url, method='GET')
+	request.add_header('Content-Type', '')
+	with urllib.request.urlopen(request) as response: ...
+
+def test_get_api_v1() -> None:
+	url = base_url + '/api/v1/'
+	request = urllib.request.Request(url, method='GET')
+	request.add_header('Content-Type', '')
+	with urllib.request.urlopen(request) as response: ...
+
 def test_get_api_v1_todos() -> None:
 	url = base_url + '/api/v1/todos'
 	request = urllib.request.Request(url, method='GET')
@@ -30,14 +42,14 @@ def test_get_api_v1_todo_get_todo_id() -> None:
 
 def test_post_api_v1_todos() -> None:
 	url = base_url + '/api/v1/todos'
-	data = json.dumps({'title': 'string', 'description': 'value'}).encode()
+	data = json.dumps({'title': 'value', 'description': 'value'}).encode()
 	request = urllib.request.Request(url, data=data, method='POST')
 	request.add_header('Content-Type', 'application/json')
 	with urllib.request.urlopen(request) as response: ...
 
 def test_patch_api_v1_todo_patch_todo_id() -> None:
 	url = base_url + '/api/v1/todo/patch/todo_id'
-	data = json.dumps({'title': 'string', 'description': 'str-obj', 'completed': True}).encode()
+	data = json.dumps({'title': 'string', 'description': 'string', 'completed': True}).encode()
 	request = urllib.request.Request(url, data=data, method='PATCH')
 	request.add_header('Content-Type', 'application/json')
 	with urllib.request.urlopen(request) as response: ...

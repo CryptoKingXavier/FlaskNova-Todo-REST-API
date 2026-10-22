@@ -10,6 +10,14 @@ GET {{base_url}}/health
 null
 
 ###
+GET {{base_url}}/
+null
+
+###
+GET {{base_url}}/api/v1/
+null
+
+###
 GET {{base_url}}/api/v1/todos
 null
 
@@ -22,8 +30,8 @@ POST {{base_url}}/api/v1/todos
 Content-Type: application/json
 
 {
-    "title": "str-obj",
-    "description": "string"
+    "title": "value",
+    "description": "value"
 }
 
 ###
@@ -31,8 +39,8 @@ PATCH {{base_url}}/api/v1/todo/patch/todo_id
 Content-Type: application/json
 
 {
-    "title": "str-obj",
-    "description": "str-obj",
+    "title": "value",
+    "description": "string",
     "completed": true
 }
 

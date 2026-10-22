@@ -2,4 +2,5 @@ mypy
 snoop
 pydantic
 flask-nova
+cryptography
 python-dotenv

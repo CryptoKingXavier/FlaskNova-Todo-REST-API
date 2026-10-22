@@ -15,4 +15,13 @@ if __name__ == "__main__":
 
   # Bind only to loopback by default to avoid exposing the development server.
   # Debug mode is disabled because debug consoles can expose sensitive internals.
-  app.run(host="127.0.0.1", port=5000, debug=True)
+  app.run(
+    host="127.0.0.1",
+    port=5000,
+    debug=True,
+    load_dotenv=True,
+    use_reloader=True,
+    use_debugger=True,
+    use_evalex=True,
+    ssl_context="adhoc",
+  )

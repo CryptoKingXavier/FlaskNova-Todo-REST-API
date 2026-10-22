@@ -60,7 +60,7 @@ pip install -r requirements.txt
 py app.py
 ```
 
-> The API should listen at `http://127.0.0.1:5000` if startup succeeds.
+> The API should listen at `https://127.0.0.1:5000` if startup succeeds.
 
 ## 3. Test the REST endpoints
 
@@ -83,6 +83,7 @@ Endpoint           Methods  Rule
 api.create_todo    POST     /api/v1/todos
 api.delete_todo    DELETE   /api/v1/todo/delete/<int:todo_id>
 api.get_todo       GET      /api/v1/todo/get/<int:todo_id>
+api.index          GET      /api/v1/
 api.list_todos     GET      /api/v1/todos
 api.update_todo    PATCH    /api/v1/todo/patch/<int:todo_id>
 docs.openapi_json  GET      /openapi.json
@@ -90,6 +91,7 @@ docs.redoc_ui      GET      /redoc
 docs.scalar_ui     GET      /scalar
 docs.swagger_ui    GET      /docs
 health_check       GET      /health
+index              GET      /
 logger             GET      /log
 static             GET      /static/<path:filename>
 ```
@@ -97,7 +99,7 @@ static             GET      /static/<path:filename>
 ### Create your first Todo
 
 ```bash
-curl -X POST http://127.0.0.1:5000/api/v1/todos \\
+curl -X POST https://127.0.0.1:5000/api/v1/todos \\
   -H "Content-Type: application/json" \\
   -d '{"title":"Test FlaskNova","description":"Evaluate validation and routing"}'
 ```
@@ -105,7 +107,7 @@ curl -X POST http://127.0.0.1:5000/api/v1/todos \\
 ### Update its completion status
 
 ```bash
-curl -X PATCH http://127.0.0.1:5000/api/v1/todo/patch/1 \\
+curl -X PATCH https://127.0.0.1:5000/api/v1/todo/patch/1 \\
   -H "Content-Type: application/json" \\
   -d '{"completed":true}'
 ```
@@ -113,7 +115,7 @@ curl -X PATCH http://127.0.0.1:5000/api/v1/todo/patch/1 \\
 ### Try invalid input
 
 ```bash
-curl -X POST http://127.0.0.1:5000/api/v1/todos \\
+curl -X POST https://127.0.0.1:5000/api/v1/todos \\
   -H "Content-Type: application/json" \\
   -d '{"title":"","unexpected_field":true}'
 ```
@@ -124,8 +126,8 @@ curl -X POST http://127.0.0.1:5000/api/v1/todos \\
 
 Once the server is running, try:
 
-- Swagger UI: [http://127.0.0.1:5000/docs](http://127.0.0.1:5000/docs)
-- ReDoc: [http://127.0.0.1:5000/redoc](http://127.0.0.1:5000/redoc)
+- Swagger UI: [https://127.0.0.1:5000/docs](https://127.0.0.1:5000/docs)
+- ReDoc: [https://127.0.0.1:5000/redoc](https://127.0.0.1:5000/redoc)
 
 > These routes should be verified against the installed version.
 

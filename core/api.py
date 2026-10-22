@@ -1,5 +1,14 @@
+# Importing Flask internals
+from flask import redirect, url_for
+
 # FlaskNova supplies the Flask-compatible application and API documentation features.
-from flask_nova import FlaskNova, HTTPException, NovaBlueprint, status
+from flask_nova import (
+  FlaskNova,
+  HTTPException,
+  NovaBlueprint,
+  get_flasknova_logger,  # Enabling colored JSON log formatting
+  status,
+)
 
 # Importing project configuration files
 from . import *
@@ -24,6 +33,9 @@ app = FlaskNova(
 )
 app.config.from_object(Config)
 
+# Creating logger instance
+_logger = get_flasknova_logger()
+
 # Utilizing the blueprint concept
 api = NovaBlueprint("api", url_prefix=API_PREFIX)
 
@@ -37,15 +49,15 @@ api = NovaBlueprint("api", url_prefix=API_PREFIX)
   "/log",
   tags=["Logger"],
   summary="Check Logger availability.",
-  description="This endpoint is useful for a a quick smoke test and for local development logging checks.",
+  description="This endpoint is useful for a quick smoke test and for local development logging checks.",
   response_model=LogResponse,
 )
 def logger() -> dict[LogResponse, int]:
-  app.logger.debug("/logger")
-  app.logger.info("/logger")
-  app.logger.error("/logger", exc_info=True)
-  app.logger.critical("/logger")
-  app.logger.warning("/logger")
+  _logger.info("FlaskNova Logger Started!")
+  # app.logger.info("/logger")
+  # app.logger.error("/logger", exc_info=True)
+  # app.logger.critical("/logger")
+  # app.logger.warning("/logger")
   return LogResponse(status="ok", msg="Logger!"), status.OK
 
 
@@ -64,6 +76,25 @@ def health_check() -> tuple[HealthResponse, int]:
     service=API_TITLE,
     version=API_VERSION,
   ), status.OK
+
+
+@app.get(
+  "/",
+  tags=["Home"],
+  summary="HomePage route.",
+  description="FlaskNova Todo REST API HomePage route.",
+)
+@api.get(
+  "/",
+  tags=["Home"],
+  summary="HomePage route.",
+  description="FlaskNova Todo REST API HomePage route.",
+)
+def index():
+  return redirect(
+    url_for("api.list_todos", _method="GET", _scheme="https", _external=True),
+    status.TEMPORARY_REDIRECT,
+  )
 
 
 @api.get(

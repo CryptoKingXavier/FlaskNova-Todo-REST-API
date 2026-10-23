@@ -1,5 +1,5 @@
 # Standard-library imports provide timestamps, IDs, typing, and in-memory storage.
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from itertools import count
 from threading import Lock
 from typing import Any
@@ -26,7 +26,7 @@ _store_lock = Lock()
 
 def utc_now() -> datetime:
   """Return the current timezone-aware UTC timestamp."""
-  return datetime.now(timezone.utc)
+  return datetime.now(UTC)
 
 
 def serialize_todo(todo: dict[str, Any]) -> dict[str, Any]:

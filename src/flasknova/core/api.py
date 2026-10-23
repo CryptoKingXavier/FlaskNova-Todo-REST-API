@@ -142,7 +142,7 @@ def create_todo(data: TodoCreate) -> tuple[TodoResponse, int]:
       "id": todo_id,
       "title": data.title.strip(),
       "description": data.description.strip(),
-      "completed": bool(),
+      "completed": False,
       "created_at": timestamp,
       "updated_at": timestamp,
     }

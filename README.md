@@ -35,29 +35,27 @@ git clone https://github.com/CryptoKingXavier/FlaskNova-Todo-REST-API.git
 # Navigate to the directory
 cd FlaskNova-Todo-REST-API/
 
-# Create a virtual environment using virtualenv
-py -m venv .venv
-```
-
-Activate the virtual environment, then install the dependencies:
-
-```bash
-# Windows PowerShell
-.\\.venv\\Scripts\\Activate.ps1
-
-# Kali Linux / WSL2 / macOS
-source .venv/bin/activate
-```
-
-```bash
 # Update Python's Package Installer (PIP) to latest version
 pip install --upgrade pip
 
+# Install uv package manager
+pip install uv
+
+# Sync project with uv.lock
+uv sync
+
+# Activate the virtual environment, then install the dependencies:
+# 1. Windows PowerShell
+.\\.venv\\Scripts\\Activate.ps1
+
+# 2. Kali Linux / WSL2 / macOS
+source .venv/bin/activate
+
 # Iteratively install project requirements from requirements file
-pip install -r requirements.txt
+uv add -r requirements.txt
 
 # Startup the development server
-py app.py
+uv run flasknova
 ```
 
 > The API should listen at `https://127.0.0.1:5000` if startup succeeds.
@@ -72,7 +70,6 @@ py app.py
 | `GET` | `/api/v1/todo/get/1` | `200 OK`, or `404` |
 | `PATCH` | `/api/v1/todo/patch/1` | `200 OK`, or `404` |
 | `DELETE` | `/api/v1/todo/delete/1` | `204 No Content`, or `404` |
-
 
 ```bash
 flask routes

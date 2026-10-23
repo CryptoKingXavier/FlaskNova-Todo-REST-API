@@ -1,0 +1,1 @@
+uv init --name FlaskNova --description "FlaskNova Todo REST API — Capability Test" --no-readme --author-from git --vcs git --trusted-host 127.0.0.1 --cache-dir cache/ --color always --verbose --no-managed-python --app .

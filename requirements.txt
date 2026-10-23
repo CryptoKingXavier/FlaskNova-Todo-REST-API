@@ -1,5 +1,7 @@
 mypy
+httpx
 snoop
+requests
 pydantic
 flask-nova
 cryptography
